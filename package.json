@@ -1,0 +1,55 @@
+{
+    "name": "ddp_admin",
+    "version": "1.0.0",
+    "description": "后台管理",
+    "author": "邓登攀",
+    "private": true,
+    "config": {
+        "nuxt": {
+            "host": "0.0.0.0",
+            "port": "3002"
+        }
+    },
+    "scripts": {
+        "dev": "nuxt",
+        "dev:dev": "cross-env NODE_ENV=development nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "start:dev": "cross-env NODE_ENV=development nuxt start",
+        "app": "npm run build && npm run start",
+        "pm2": "pm2 start node_modules/nuxt/bin/nuxt-start --name admin",
+        "bpm2": "npm run build && pm2 start node_modules/nuxt/bin/nuxt-start --name admin",
+        "rpm2": "pm2 restart admin",
+        "brpm2": "npm run build && pm2 restart admin"
+    },
+    "dependencies": {
+        "axios": "^0.17.1",
+        "clipboard": "^1.7.1",
+        "element-ui": "^2.0.10",
+        "highlight.js": "^9.12.0",
+        "marked": "^0.3.12",
+        "nuxt": "^1.0.0-rc11",
+        "photoswipe": "^4.1.2",
+        "smooth-scrollbar": "^8.2.5",
+        "vue": "^2.5.2",
+        "vue-server-renderer": "^2.5.2",
+        "vue-template-compiler": "^2.5.2"
+    },
+    "devDependencies": {
+        "babel-eslint": "^7.2.3",
+        "babel-plugin-component": "^1.1.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "eslint": "^4.3.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-loader": "^1.9.0",
+        "eslint-plugin-html": "^3.1.1",
+        "eslint-plugin-import": "^2.7.0",
+        "eslint-plugin-node": "^5.1.1",
+        "eslint-plugin-promise": "^3.5.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "node-sass": "^4.7.2",
+        "sass-loader": "^6.0.6",
+        "uglifyjs-webpack-plugin": "^1.2.2"
+    }
+}

@@ -1,0 +1,184 @@
+.ddp-editor {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    .ddp-markdown {
+        position: relative;
+        overflow: hidden;
+        .markdown-editor {
+            height: 250px;
+            overflow: auto;
+            outline: none;
+            padding: .5em;
+            cursor: auto;
+            font-size: .95em;
+            line-height: 1.8em;
+            background-color: #f0f0f0;
+            &:empty:before {
+                content: attr(placeholder);
+                color: rgba(0, 0, 0, .38);
+            }
+            &:focus {
+                content: none;
+            }
+            &:hover {
+                background-color: hsla(0, 0%, 90%, .6);
+            }
+        }
+        .markdown-preview {
+            font-size: 1em;
+            line-height: 2em;
+            margin: .5em 0;
+            word-wrap: break-word;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            overflow: auto;
+            margin: 0;
+            padding: .5em;
+            @include css3-prefix(transform, translateY(-100%));
+            background-color: hsla(0, 0%, 92%, .85);
+            transition: transform .2s;
+            &.actived {
+                height: 100%;
+                transition: transform .2s;
+                @include css3-prefix(transform, translateY(0));
+            }
+        }
+    }
+    .editor-tools {
+        height: 2em;
+        line-height: 2em;
+        background-color: hsla(0, 0%, 80%, .6);
+        >a {
+            width: 2em;
+            height: 2em;
+            text-align: center;
+            display: inline-block;
+            .emoji-box {
+                display: none;
+                position: absolute;
+                bottom: 2em;
+                left: 0;
+                background-color: #fff;
+                >ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    font-size: 1.3em;
+                    display: flex;
+                    flex-wrap: wrap;
+                    >li {
+                        padding: 0 .4em;
+                        cursor: pointer;
+                    }
+                }
+            }
+            &.emoji:hover .emoji-box {
+                display: block;
+            }
+        }
+    }
+    &.fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #fff;
+        .editor-tools {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            // background-color: #000;
+            // i {
+            //     color: #fff;
+            // }
+            // height: 20%;
+        }
+        .ddp-markdown {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding-bottom: 4em;
+            .markdown-editor {
+                height: 100%;
+                background: #fff;
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+            .markdown-preview {
+                background: #fff;
+                padding-bottom: 4em;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+.ddp-markdown {
+    a {
+        text-decoration: underline;
+    }
+    img {
+        margin: .5rem 0;
+        max-width: 100%;
+        border-radius: 2px;
+    }
+    p {
+        margin: 0;
+    }
+    code {
+        color: #bd4147;
+        padding: .3em .5em;
+        margin: 0 .5em;
+        border-radius: 2px;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+    pre {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap-reverse;
+        position: relative;
+        overflow: hidden;
+        margin-top: .6em;
+        margin-bottom: 1em;
+        padding-top: 2.5em;
+        border-radius: 2px;
+        background-color: rgba(0, 0, 0, .8);
+        &:before {
+            color: white;
+            content: attr(data-lang)" CODE";
+            height: 2.5em;
+            line-height: 2.5em;
+            font-size: 1em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-weight: 700;
+            background-color: rgba(68, 68, 68, 0.9);
+            display: block;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        >.code-lines {
+            display: none;
+        }
+        >code {
+            margin: 0;
+            padding: 1em;
+            float: left;
+            width: 100%;
+            height: 100%;
+            display: block;
+            line-height: 1.6em;
+            color: rgba(255, 255, 255, 0.87);
+            background-color: transparent;
+        }
+    }
+}
